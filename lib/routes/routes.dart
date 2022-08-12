@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:pharmacies/view/screens/auth/login_screen.dart';
+import 'package:pharmacies/view/screens/auth/signup_screen.dart';
 import 'package:pharmacies/view/screens/welcome_screen.dart';
 
 class AppRoutes {
@@ -12,6 +14,17 @@ class AppRoutes {
     GetPage(
       name: Routes.welcomeScreen,
       page: () => const WelcomeScreen(),
+    ),
+    ,
+    GetPage(
+      name: Routes.loginScreen,
+      page: () => LoginScreen(),
+      
+    ),
+    GetPage(
+      name: Routes.signUpScreen,
+      page: () => SignUpScreen(),
+      
     ),
   ];
 }
