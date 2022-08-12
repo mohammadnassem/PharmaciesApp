@@ -15,16 +15,13 @@ class AppRoutes {
       name: Routes.welcomeScreen,
       page: () => const WelcomeScreen(),
     ),
-    ,
     GetPage(
       name: Routes.loginScreen,
       page: () => LoginScreen(),
-      
     ),
     GetPage(
       name: Routes.signUpScreen,
       page: () => SignUpScreen(),
-      
     ),
   ];
 }
