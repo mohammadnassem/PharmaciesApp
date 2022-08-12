@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:pharmacies/logic/bindings/auth_biniding.dart';
 import 'package:pharmacies/view/screens/auth/login_screen.dart';
 import 'package:pharmacies/view/screens/auth/signup_screen.dart';
 import 'package:pharmacies/view/screens/welcome_screen.dart';
@@ -18,10 +19,12 @@ class AppRoutes {
     GetPage(
       name: Routes.loginScreen,
       page: () => LoginScreen(),
+      binding: AuthBinding(),
     ),
     GetPage(
       name: Routes.signUpScreen,
       page: () => SignUpScreen(),
+      binding: AuthBinding(),
     ),
   ];
 }
