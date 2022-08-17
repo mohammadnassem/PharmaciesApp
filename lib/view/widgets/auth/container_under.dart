@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacies/utils/theme.dart';
-
+import '../../../utils/theme.dart';
 import '../text_utils.dart';
 
 class ContainerUnder extends StatelessWidget {

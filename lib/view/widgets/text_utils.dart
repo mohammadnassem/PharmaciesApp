@@ -8,7 +8,7 @@ class TextUtils extends StatelessWidget {
   final FontWeight fontWeight;
   final TextDecoration underLine;
 
-  TextUtils({
+  const TextUtils({
     required this.fontSize,
     required this.fontWeight,
     required this.text,

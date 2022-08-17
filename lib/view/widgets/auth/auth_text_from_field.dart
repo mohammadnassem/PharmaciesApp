@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AuthTextFromField extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final bool obscureText;
   final Function validator;
   final Widget prefixIcon;
   final Widget suffixIcon;
   final String hintText;
   const AuthTextFromField({
-    required this.controller,
+    this.controller,
     required this.obscureText,
     required this.validator,
     required this.prefixIcon,

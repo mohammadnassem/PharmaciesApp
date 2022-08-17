@@ -13,17 +13,17 @@ const Color accountSettings = Color(0xff73bc65);
 const Color logOutSettings = Color(0xff5f95ef);
 const Color notiSettings = Color(0xffdf5862);
 const Color languageSettings = Color(0xffCB256C);
+const Color whitecolor = Color(0xffFFFFFF);
+Color primaryGreen = const Color(0xff416d6d);
+
+List<BoxShadow> shadowList = [
+  const BoxShadow(color: Colors.grey, blurRadius: 30, offset: Offset(0, 10))
+];
 
 class ThemesApp {
   static final light = ThemeData(
     primaryColor: mainColor,
     backgroundColor: Colors.white,
     brightness: Brightness.light,
-  );
-
-  static final dark = ThemeData(
-    primaryColor: darkGreyClr,
-    backgroundColor: darkGreyClr,
-    brightness: Brightness.dark,
   );
 }

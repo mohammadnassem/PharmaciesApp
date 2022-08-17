@@ -1,14 +1,17 @@
 import 'package:get/get.dart';
 import 'package:pharmacies/logic/bindings/auth_biniding.dart';
+import 'package:pharmacies/logic/bindings/splash_binding.dart';
 import 'package:pharmacies/view/screens/auth/login_screen.dart';
 import 'package:pharmacies/view/screens/auth/signup_screen.dart';
+import 'package:pharmacies/view/screens/main_screen.dart';
+import 'package:pharmacies/view/screens/splash_screen.dart';
 import 'package:pharmacies/view/screens/welcome_screen.dart';
 
 class AppRoutes {
   //initialRoute
 
   static const welcome = Routes.welcomeScreen;
-  static const mainSreen = Routes.mainScreen;
+  static const splashScreen = Routes.splashScreen;
   //getPages
 
   static final routes = [
@@ -26,6 +29,15 @@ class AppRoutes {
       page: () => SignUpScreen(),
       binding: AuthBinding(),
     ),
+    GetPage(
+      name: Routes.mainScreen,
+      page: () => const MainScreen(),
+    ),
+    GetPage(
+      name: Routes.splashScreen,
+      page: () => SplashScreen(),
+      binding: SplashBinding(),
+    ),
   ];
 }
 
@@ -35,4 +47,5 @@ class Routes {
   static const signUpScreen = '/signUpScreen';
   static const forgotPasswordScreen = '/forgotPasswordScreen';
   static const mainScreen = '/mainScreen';
+  static const splashScreen = '/SplashScreen';
 }

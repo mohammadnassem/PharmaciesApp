@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacies/logic/controllers/auth_controller.dart';
-import 'package:pharmacies/utils/theme.dart';
+import '../../../logic/controllers/auth_controller.dart';
+import '../../../utils/theme.dart';
 
 import '../text_utils.dart';
 

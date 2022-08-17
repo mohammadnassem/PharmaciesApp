@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:pharmacies/logic/controllers/auth_controller.dart';
-import 'package:pharmacies/routes/routes.dart';
-import 'package:pharmacies/utils/my_string.dart';
-import 'package:pharmacies/utils/theme.dart';
-import 'package:pharmacies/view/widgets/auth/auth_button.dart';
-import 'package:pharmacies/view/widgets/auth/auth_text_from_field.dart';
-import 'package:pharmacies/view/widgets/auth/container_under.dart';
-import 'package:pharmacies/view/widgets/text_utils.dart';
+import '../../../logic/controllers/auth_controller.dart';
+import '../../../model/user.dart';
+import '../../../routes/routes.dart';
+import '../../../utils/my_string.dart';
+import '../../../utils/theme.dart';
+import '../../widgets/auth/auth_button.dart';
+import '../..//widgets/auth/auth_text_from_field.dart';
+import '../../widgets/auth/container_under.dart';
+import '../../widgets/text_utils.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
-          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
+          backgroundColor: Colors.white,
           elevation: 0,
         ),
         body: SingleChildScrollView(
@@ -42,23 +44,22 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Row(
-                          children: [
+                          children: const [
                             TextUtils(
                               fontSize: 28,
                               fontWeight: FontWeight.w500,
                               text: "LOG",
-                              color: Get.isDarkMode ? pinkClr : mainColor,
+                              color: mainColor,
                               underLine: TextDecoration.none,
                             ),
-                            const SizedBox(
+                            SizedBox(
                               width: 3,
                             ),
                             TextUtils(
                               fontSize: 28,
                               fontWeight: FontWeight.w500,
                               text: "IN",
-                              color:
-                                  Get.isDarkMode ? Colors.white : Colors.black,
+                              color: Colors.black,
                               underLine: TextDecoration.none,
                             ),
                           ],
@@ -79,13 +80,7 @@ class LoginScreen extends StatelessWidget {
                               return null;
                             }
                           },
-                          prefixIcon: Get.isDarkMode
-                              ? const Icon(
-                                  Icons.email,
-                                  color: pinkClr,
-                                  size: 30,
-                                )
-                              : Image.asset('assets/images/email.png'),
+                          prefixIcon: Image.asset('assets/images/email.png'),
                           suffixIcon: const Text(""),
                           hintText: 'Email',
                         ),
@@ -105,13 +100,7 @@ class LoginScreen extends StatelessWidget {
                                   return null;
                                 }
                               },
-                              prefixIcon: Get.isDarkMode
-                                  ? const Icon(
-                                      Icons.lock,
-                                      color: pinkClr,
-                                      size: 30,
-                                    )
-                                  : Image.asset('assets/images/lock.png'),
+                              prefixIcon: Image.asset('assets/images/lock.png'),
                               hintText: 'Password',
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -130,22 +119,6 @@ class LoginScreen extends StatelessWidget {
                             );
                           },
                         ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: () {
-                              Get.toNamed(Routes.forgotPasswordScreen);
-                            },
-                            child: TextUtils(
-                              text: 'Forgot Password?',
-                              fontSize: 14,
-                              color:
-                                  Get.isDarkMode ? Colors.white : Colors.black,
-                              underLine: TextDecoration.none,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ),
                         const SizedBox(
                           height: 50,
                         ),
@@ -155,6 +128,14 @@ class LoginScreen extends StatelessWidget {
                               if (fromKey.currentState!.validate()) {
                                 String email = emailController.text.trim();
                                 String password = passwordController.text;
+                                EasyLoading.instance.loadingStyle =
+                                    EasyLoadingStyle.light;
+                                EasyLoading.show(status: 'loading...');
+
+                                controller.login(User(
+                                  email: email,
+                                  password: password,
+                                ));
                               }
                             },
                             text: "LOG IN",
@@ -162,38 +143,6 @@ class LoginScreen extends StatelessWidget {
                         }),
                         const SizedBox(
                           height: 20,
-                        ),
-                        TextUtils(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          text: "OR",
-                          color: Get.isDarkMode ? Colors.white : Colors.black,
-                          underLine: TextDecoration.none,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Image.asset(
-                                "assets/images/facebook.png",
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            GetBuilder<AuthController>(builder: (_) {
-                              return InkWell(
-                                onTap: () {},
-                                child: Image.asset(
-                                  "assets/images/google.png",
-                                ),
-                              );
-                            }),
-                          ],
                         ),
                       ],
                     ),
